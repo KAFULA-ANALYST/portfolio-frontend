@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Portfolio</title>
+
+    <link rel="icon" href="data:,">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+    <!-- NAVBAR -->
     <nav>
-        <h2>KWANGU M. KAFULA</h2>
+
+        <h2 class="logo">KWANGU M. KAFULA</h2>
 
         <ul>
             <li><a href="#about">About</a></li>
@@ -17,120 +28,114 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="hero">
-        <h1>Welcome To My Portfolio</h1>
 
-        <p>Data Scientist | Cloud Computing Student | Data Analyst</p>
+        <div class="hero-content">
 
-        <button>Download CV</button>
-    </section>
+            <img src="images/profile.jpg"
+            alt="Profile Image"
+            class="profile-image">
 
-    <div class="container">
+            <h1>KWANGU M. KAFULA</h1>
 
-        <section id="about" class="about">
-            <h2 class="section-title">About Me</h2>
+            <h2 id="typing-text"></h2>
 
             <p>
-                I am passionate about Data Science, Machine Learning,
-                Networking, Cloud Computing, and Artificial Intelligence.
-                I enjoy solving real-world problems using technology and building
-                innovative systems.
+                Passionate about Data Science,
+                Artificial Intelligence,
+                Cloud Computing and Networking.
             </p>
-        </section>
 
-        <br><br>
+            <div class="hero-buttons">
 
-        <section id="skills">
-            <h2 class="section-title">My Skills</h2>
+                <a href="#" class="btn">
+                    Download CV
+                </a>
 
-            <div class="skills-grid">
-
-                <div class="skill-card">
-                    <h3>Python</h3>
-                    <p>Data Analysis & Automation</p>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Cloud Computing</h3>
-                    <p>Vercel & Render Deployment</p>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Networking</h3>
-                    <p>Cisco Packet Tracer</p>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Machine Learning</h3>
-                    <p>Predictive Modeling</p>
-                </div>
+                <a href="#contact" class="btn btn-outline">
+                    Contact Me
+                </a>
 
             </div>
-        </section>
 
-        <br><br>
+        </div>
 
-        <section id="projects">
-            <h2 class="section-title">Projects</h2>
+    </section>
 
-            <div class="projects-grid">
+    <!-- ABOUT -->
+    <section id="about" class="section">
 
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Crop Disease Detection</h3>
+        <h2 class="section-title">About Me</h2>
 
-                        <p>
-                            AI-powered mobile application for detecting cassava
-                            and maize diseases offline.
-                        </p>
-                    </div>
-                </div>
+        <div class="card">
 
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Office Network Design</h3>
+            <p>
+                I am a Data Science student interested in
+                Machine Learning, Cloud Computing,
+                Networking and Artificial Intelligence.
+                I enjoy solving real-world problems
+                using technology.
+            </p>
 
-                        <p>
-                            Network infrastructure implementation using Cisco
-                            Packet Tracer.
-                        </p>
-                    </div>
-                </div>
+        </div>
 
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Portfolio Website</h3>
+    </section>
 
-                        <p>
-                            Cloud-hosted personal portfolio using Vercel and
-                            Render.
-                        </p>
-                    </div>
-                </div>
+    <!-- SKILLS -->
+    <section id="skills" class="section">
 
-            </div>
-        </section>
+        <h2 class="section-title">Skills</h2>
 
-        <br><br>
+        <div class="skills-grid"></div>
 
-        <section id="contact" class="contact">
-            <h2 class="section-title">Contact Me</h2>
+    </section>
 
-            <p>Email: mussalazaro57@gmail.com</p>
-            <p>Phone: +255 763247458</p>
-            <p>GitHub: github.com/KAFULA-ANALYST</p>
-        </section>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
 
-    </div>
+        <h2 class="section-title">Projects</h2>
 
+        <div class="projects-grid"></div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+
+        <h2 class="section-title">Contact</h2>
+
+        <div class="card contact-card">
+
+            <p><i class="fa-solid fa-envelope"></i> mussalazaro57@gmail.com</p>
+
+            <p><i class="fa-solid fa-phone"></i> +255 763247458</p>
+
+            <p>
+                <i class="fa-brands fa-github"></i>
+
+                <a href="#">
+                    GitHub Profile
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 KWANGU M. KAFULA Portfolio Website</p>
+
+        <p>
+            © 2026 KWANGU M. KAFULA Portfolio Website
+        </p>
+
     </footer>
 
     <script src="script.js"></script>
 
 </body>
 </html>
-
