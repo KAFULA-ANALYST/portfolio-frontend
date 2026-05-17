@@ -3,139 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Portfolio</title>
-
     <link rel="icon" href="data:,">
-
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <!-- NAVBAR -->
-    <nav>
-
-        <h2 class="logo">KWANGU M. KAFULA</h2>
-
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="logo">KMK<span class="logo-dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Hire Me</a>
+            <button class="burger" id="burger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- MOBILE MENU -->
+    <div class="mob-menu" id="mob-menu">
+        <button class="mob-close" id="mob-close"><i class="fa-solid fa-xmark"></i></button>
+        <ul>
+            <li><a href="#about" class="mob-link">About</a></li>
+            <li><a href="#skills" class="mob-link">Skills</a></li>
+            <li><a href="#projects" class="mob-link">Projects</a></li>
+            <li><a href="#contact" class="mob-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- HERO -->
     <section class="hero">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
 
-        <div class="hero-content">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="badge">
+                    <span class="badge-dot"></span> Open to Opportunities
+                </div>
 
-            <img src="images/profile.jpg"
-            alt="Profile Image"
-            class="profile-image">
+                <h1 class="hero-name">
+                    Hi, I'm<br>
+                    <span class="highlight">KWANGU M.</span><br>
+                    KAFULA.
+                </h1>
 
-            <h1>KWANGU M. KAFULA</h1>
+                <p class="hero-role">
+                    <span id="typing-text"></span><span class="caret">|</span>
+                </p>
 
-            <h2 id="typing-text"></h2>
+                <p class="hero-para">
+                    Passionate about Data Science, AI, Cloud Computing and Networking.
+                    Turning data into decisions.
+                </p>
 
-            <p>
-                Passionate about Data Science,
-                Artificial Intelligence,
-                Cloud Computing and Networking.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#" class="btn">
-                    Download CV
-                </a>
-
-                <a href="#contact" class="btn btn-outline">
-                    Contact Me
-                </a>
-
+                <div class="hero-btns">
+                    <a href="#" class="btn-main">
+                        <i class="fa-solid fa-download"></i> Download CV
+                    </a>
+                    <a href="#contact" class="btn-line">Contact Me</a>
+                </div>
             </div>
 
+            <div class="hero-right">
+                <div class="profile-wrap">
+                    <img src="images/Photo.png" alt="KWANGU M. KAFULA" class="Photo-image">
+                    <div class="float-chip chip-1">
+                        <i class="fa-solid fa-brain"></i> AI
+                    </div>
+                    <div class="float-chip chip-2">
+                        <i class="fa-solid fa-cloud"></i> Cloud
+                    </div>
+                    <div class="float-chip chip-3">
+                        <i class="fa-solid fa-chart-simple"></i> Data
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="section">
+        <div class="container">
+            <p class="sec-tag">01 — About Me</p>
+            <h2 class="sec-title">A student on a <span class="highlight">mission.</span></h2>
 
-        <h2 class="section-title">About Me</h2>
-
-        <div class="card">
-
-            <p>
-                I am a Data Science student interested in
-                Machine Learning, Cloud Computing,
-                Networking and Artificial Intelligence.
-                I enjoy solving real-world problems
-                using technology.
-            </p>
-
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I'm a <strong>Data Science student</strong> who loves solving real-world problems using technology. My interests span Machine Learning, Cloud Computing, Networking, and Artificial Intelligence.</p>
+                    <p>I believe data, when understood correctly, can change everything — from healthcare decisions to business strategy.</p>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <span class="stat-n" data-to="10">0</span><span class="stat-plus">+</span>
+                        <p>Projects</p>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-n" data-to="4">0</span><span class="stat-plus">+</span>
+                        <p>Domains</p>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-n" data-to="100">0</span><span class="stat-plus">%</span>
+                        <p>Committed</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="section">
-
-        <h2 class="section-title">Skills</h2>
-
-        <div class="skills-grid"></div>
-
+    <section id="skills" class="section sec-tint">
+        <div class="container">
+            <p class="sec-tag">02 — Skills</p>
+            <h2 class="sec-title">What I <span class="highlight">work with.</span></h2>
+            <div class="skills-grid" id="skills-grid">
+                <div class="loading-row"><div class="spin"></div> Loading skills...</div>
+            </div>
+        </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="section">
-
-        <h2 class="section-title">Projects</h2>
-
-        <div class="projects-grid"></div>
-
+        <div class="container">
+            <p class="sec-tag">03 — Projects</p>
+            <h2 class="sec-title">Things I've <span class="highlight">built.</span></h2>
+            <div class="projects-grid" id="projects-grid">
+                <div class="loading-row"><div class="spin"></div> Loading projects...</div>
+            </div>
+        </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
-
-        <h2 class="section-title">Contact</h2>
-
-        <div class="card contact-card">
-
-            <p><i class="fa-solid fa-envelope"></i> mussalazaro57@gmail.com</p>
-
-            <p><i class="fa-solid fa-phone"></i> +255 763247458</p>
-
-            <p>
-                <i class="fa-brands fa-github"></i>
-
-                <a href="#">
-                    GitHub Profile
+    <section id="contact" class="section sec-tint">
+        <div class="container">
+            <p class="sec-tag">04 — Contact</p>
+            <h2 class="sec-title">Let's <span class="highlight">connect.</span></h2>
+            <p class="contact-lead">Have a project or opportunity? I'd love to hear from you.</p>
+            <div class="contact-list">
+                <a href="mailto:mussalazaro57@gmail.com" class="contact-row">
+                    <div class="c-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="c-text">
+                        <span>Email</span>
+                        <strong>mussalazaro57@gmail.com</strong>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right c-arrow"></i>
                 </a>
-            </p>
-
+                <a href="tel:+255763247458" class="contact-row">
+                    <div class="c-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="c-text">
+                        <span>Phone</span>
+                        <strong>+255 763 247 458</strong>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right c-arrow"></i>
+                </a>
+                <a href="#" class="contact-row">
+                    <div class="c-icon"><i class="fa-brands fa-github"></i></div>
+                    <div class="c-text">
+                        <span>GitHub</span>
+                        <strong>View Profile</strong>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right c-arrow"></i>
+                </a>
+            </div>
         </div>
-
     </section>
 
     <!-- FOOTER -->
     <footer>
-
-        <p>
-            © 2026 KWANGU M. KAFULA Portfolio Website
-        </p>
-
+        <div class="footer-inner">
+            <span class="logo">KMK<span class="logo-dot">.</span></span>
+            <p>© 2026 KWANGU M. KAFULA</p>
+            <a href="#" class="top-btn"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
