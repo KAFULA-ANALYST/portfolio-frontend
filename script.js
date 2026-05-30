@@ -184,35 +184,53 @@ function renderProjects(projects) {
     });
 }
 
-// Render hardcoded data immediately so page never looks empty
-renderSkills(SKILLS);
-renderProjects(PROJECTS);
+// ── Show loading spinners first, then fetch from backend ──
+// This makes it VISIBLE that data is coming from the backend
 
-// Fetch from backend — proves frontend ↔ backend communication
-// If backend responds, update the page with live data and log proof
+function showLoading() {
+    document.getElementById('skills-grid').innerHTML = `
+        <div class="loading-row">
+            <div class="spin"></div>
+            <span>Loading from backend...</span>
+        </div>`;
+    document.getElementById('projects-grid').innerHTML = `
+        <div class="loading-row">
+            <div class="spin"></div>
+            <span>Loading from backend...</span>
+        </div>`;
+}
+
+// Show loading state first
+showLoading();
+
+// Then fetch from backend
 fetch('https://portfolio-backend-8hsl.onrender.com/api/profile')
     .then(r => { if (!r.ok) throw new Error('Backend error'); return r.json(); })
     .then(data => {
         console.log('%c✅ Backend connected! Data received:', 'color: green; font-weight: bold;', data);
 
-        // Map backend skills (strings) to display
-        if (data.skills && data.skills.length > 0) {
-            renderSkills(data.skills);
-        }
+        // Render skills from backend
+        const skills = (data.skills && data.skills.length > 0) ? data.skills : SKILLS;
+        renderSkills(skills);
 
-        // Map backend projects — add tech tags from name
+        // Render projects from backend
         if (data.projects && data.projects.length > 0) {
             const mapped = data.projects.map(p => ({
                 name: p.name,
                 description: p.description,
-                tech: inferTech(p.name + ' ' + p.description),
+                tech: p.tech || inferTech(p.name + ' ' + p.description),
                 link: (data.social && data.social.github) ? data.social.github : 'https://github.com/KAFULA-ANALYST',
             }));
             renderProjects(mapped);
+        } else {
+            renderProjects(PROJECTS);
         }
     })
-    .catch(err => {
+    .catch(() => {
+        // Backend offline — fall back to hardcoded data
         console.warn('%c⚠️ Backend offline — showing local data', 'color: orange; font-weight: bold;');
+        renderSkills(SKILLS);
+        renderProjects(PROJECTS);
     });
 
 // Infer tech tags from project text
@@ -226,4 +244,3 @@ function inferTech(text) {
     if (t.includes('javascript') || t.includes('portfolio')) tags.push('JavaScript');
     return tags.length > 0 ? tags : ['Development'];
 }
-
