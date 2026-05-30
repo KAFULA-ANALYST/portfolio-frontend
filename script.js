@@ -93,45 +93,32 @@ function getEmoji(name) {
 
 /* ── HARDCODED DATA (always visible, no API needed) ── */
 const SKILLS = [
-    'Python', 'Machine Learning', 'Data Science',
-    'Artificial Intelligence', 'Cloud Computing', 'Networking', 'SQL',
+    'Python',
+    'JavaScript',
+    'Cloud Computing (Vercel & Render)',
+    'Networking (Cisco Packet Tracer)',
+    'Machine Learning',
+    'Data Science',
+    'Data Analysis',
 ];
 
 const PROJECTS = [
     {
-        name: 'AI Disease Predictor',
-        description: 'A machine learning model that predicts diseases based on patient symptoms using Random Forest and SVM classifiers, achieving 94% accuracy on test data.',
-        tech: ['Python', 'Machine Learning', 'Flask'],
+        name: 'Crop Disease Detection',
+        description: 'AI-powered system for detecting cassava and maize diseases offline using machine learning image classification models.',
+        tech: ['Python', 'Machine Learning', 'AI'],
         link: 'https://github.com/KAFULA-ANALYST',
     },
     {
-        name: 'Network Traffic Analyzer',
-        description: 'A real-time tool for monitoring and analyzing network packets to identify anomalies and potential security threats using packet-capture techniques.',
-        tech: ['Python', 'Networking', 'Linux'],
+        name: 'Office Network Design',
+        description: 'Professional office network design and simulation using Cisco Packet Tracer, covering routing, switching and IP addressing.',
+        tech: ['Networking', 'Cisco Packet Tracer'],
         link: 'https://github.com/KAFULA-ANALYST',
     },
     {
-        name: 'Cloud Cost Dashboard',
-        description: 'An interactive dashboard that tracks and optimizes cloud infrastructure costs across AWS and Azure environments with automated alerts.',
-        tech: ['Cloud Computing', 'AWS', 'Tableau'],
-        link: 'https://github.com/KAFULA-ANALYST',
-    },
-    {
-        name: 'Student Performance Predictor',
-        description: 'A data science project that uses student academic data to predict final exam results, helping lecturers identify students who need extra support.',
-        tech: ['Python', 'Pandas', 'Data Science'],
-        link: 'https://github.com/KAFULA-ANALYST',
-    },
-    {
-        name: 'Sales Data Analysis',
-        description: 'End-to-end data analysis pipeline that processes raw sales CSV data, cleans it, and produces visual insights using Python and Power BI.',
-        tech: ['Python', 'Pandas', 'Power BI'],
-        link: 'https://github.com/KAFULA-ANALYST',
-    },
-    {
-        name: 'Portfolio Backend API',
-        description: 'A RESTful API built with Flask and deployed on Render that serves dynamic skills and project data for this portfolio website.',
-        tech: ['Python', 'Flask', 'Render'],
+        name: 'Portfolio Website',
+        description: 'Full-stack personal portfolio with a JavaScript frontend deployed on Vercel and a Node.js/Express backend deployed on Render.',
+        tech: ['JavaScript', 'Vercel', 'Render'],
         link: 'https://github.com/KAFULA-ANALYST',
     },
 ];
@@ -197,9 +184,46 @@ function renderProjects(projects) {
     });
 }
 
-// Render immediately from hardcoded data
+// Render hardcoded data immediately so page never looks empty
 renderSkills(SKILLS);
 renderProjects(PROJECTS);
 
-// Hardcoded data is the single source of truth — no API override.
+// Fetch from backend — proves frontend ↔ backend communication
+// If backend responds, update the page with live data and log proof
+fetch('https://portfolio-backend-8hsl.onrender.com/api/profile')
+    .then(r => { if (!r.ok) throw new Error('Backend error'); return r.json(); })
+    .then(data => {
+        console.log('%c✅ Backend connected! Data received:', 'color: green; font-weight: bold;', data);
+
+        // Map backend skills (strings) to display
+        if (data.skills && data.skills.length > 0) {
+            renderSkills(data.skills);
+        }
+
+        // Map backend projects — add tech tags from name
+        if (data.projects && data.projects.length > 0) {
+            const mapped = data.projects.map(p => ({
+                name: p.name,
+                description: p.description,
+                tech: inferTech(p.name + ' ' + p.description),
+                link: (data.social && data.social.github) ? data.social.github : 'https://github.com/KAFULA-ANALYST',
+            }));
+            renderProjects(mapped);
+        }
+    })
+    .catch(err => {
+        console.warn('%c⚠️ Backend offline — showing local data', 'color: orange; font-weight: bold;');
+    });
+
+// Infer tech tags from project text
+function inferTech(text) {
+    const t = text.toLowerCase();
+    const tags = [];
+    if (t.includes('python'))     tags.push('Python');
+    if (t.includes('machine learning') || t.includes('ai') || t.includes('disease')) tags.push('Machine Learning');
+    if (t.includes('network') || t.includes('cisco')) tags.push('Networking');
+    if (t.includes('cloud') || t.includes('vercel') || t.includes('render')) tags.push('Cloud');
+    if (t.includes('javascript') || t.includes('portfolio')) tags.push('JavaScript');
+    return tags.length > 0 ? tags : ['Development'];
+}
 
